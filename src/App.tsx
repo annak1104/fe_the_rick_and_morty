@@ -1,8 +1,8 @@
 import { Header } from './components/Header/Header';
 import { Banner } from './components/Banner/Banner';
 import { Footer } from './components/Footer/Footer';
+import { CardsList } from './components/CardsList/CardsList';
 import { Filter } from './components/Filter/Filter';
-import { CharacterCard } from './components/CharacterCard/CharacterCard';
 import { PaginationComponent } from './components/PaginationComponent/PaginationComponent';
 
 export const App = () => {
@@ -11,7 +11,7 @@ export const App = () => {
     <Header />
     <Banner />
     <Filter />
-    <CharacterCard />
+    <CardsList />
     <PaginationComponent />
     <Footer />
     </>
