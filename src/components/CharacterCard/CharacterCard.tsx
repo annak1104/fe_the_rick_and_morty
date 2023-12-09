@@ -1,6 +1,15 @@
-import { Box, Card, CardContent, CardMedia, Link, Typography } from '@mui/material';
+import { Box, Card, CardContent, CardMedia, Typography } from '@mui/material';
+import React from 'react';
+import { Character } from '../../types/Character';
+import { Link } from 'react-router-dom';
+import { Status } from '../Status/Status';
 
-export const CharacterCard = () => {
+type Props = {
+  character: Character;
+};
+
+export const CharacterCard: React.FC<Props> = ({ character }) => {
+
 return (
   <Card
   sx={{
@@ -10,13 +19,20 @@ return (
     height: 220,
     bgcolor: '#3C3E44',
     color: '#F5F5F5',
+    transition: 'box-shadow 0.3s ease, transform 0.3s ease',
+    ':hover': {
+      boxShadow: '0px 0px 10px 0px #000000',
+      transform: 'scale(1.005)',
+      transition: 'transform 0.3s ease',
+    },
   }}
 >
   <Link
+    to={`/character/${character.id}`}
   >
     <CardMedia
       component='img'
-      image='/favicon.png'
+      image={character.image}
       alt={'Image'}
       height='100%'
     />
@@ -48,14 +64,16 @@ return (
           }}
         >
           <Link
+             to={`./${character.id}`}
             style={{
               textDecoration: 'none',
               color: 'inherit',
             }}
           >
-            Rick Sanchez
+            {character.name}
           </Link>
         </Typography>
+        <Status status={character.status} species={character.species} />
       </Box>
 
       <Box>
@@ -69,7 +87,7 @@ return (
           Last known location:
         </Typography>
 
-        <Typography variant='body1'>Citadel of Ricks</Typography>
+        <Typography variant='body1'>{character.location?.name}</Typography>
       </Box>
 
       <Box>
@@ -83,7 +101,7 @@ return (
           First seen in:
         </Typography>
 
-        <Typography variant='body1'>Pilot</Typography>
+        <Typography variant='body1'>{character.episode[0].name}</Typography>
       </Box>
     </Box>
   </CardContent>
