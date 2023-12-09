@@ -18,6 +18,8 @@ export const Banner = () => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         padding: theme.spacing(2),
+        animation: `
+          fadeIn 1s ease-out`,
 
         [theme.breakpoints.down('md')]: {
           fontSize: '4rem',
@@ -30,6 +32,16 @@ export const Banner = () => {
         [theme.breakpoints.down('xs')]: {
           fontSize: '2rem',
           textAlign: 'center'
+        },
+        '@keyframes fadeIn': {
+          from: {
+            opacity: 0,
+            transform: 'translateY(-100px)',
+          },
+          to: {
+            opacity: 1,
+            transform: 'translateY(0)',
+          },
         },
       }}
     >

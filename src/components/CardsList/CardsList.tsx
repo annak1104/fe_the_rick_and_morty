@@ -1,7 +1,13 @@
 import { Box } from '@mui/material';
 import { CharacterCard } from '../CharacterCard/CharacterCard';
+import { useAppSelector } from '../../app/hooks/hooks';
+import { Character } from '../../types/Character';
+
+
 
 export const CardsList = () => {
+  const { characters } = useAppSelector(state => state.characters);
+  
   return (
     <Box
         sx={{
@@ -11,9 +17,9 @@ export const CardsList = () => {
           mb: 1,
         }}
       >
-        {[1,2,3,4,5,6].map((char) => (
-          <CharacterCard key={char} />
-        ))}
+     {characters.map((character: Character) => (
+      <CharacterCard character={character} key={character.id} />
+    ))}
       </Box>
   );
 };
