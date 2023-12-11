@@ -28,7 +28,7 @@ return (
   }}
 >
   <Link
-    to={`/character/${character.id}`}
+    to={`./${character.id}`}
   >
     <CardMedia
       component='img'
