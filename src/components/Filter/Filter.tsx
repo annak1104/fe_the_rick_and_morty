@@ -1,14 +1,19 @@
-import { 
+import {
   Box,
   Button,
   Checkbox,
   FormControlLabel,
   FormGroup,
+  ListItemText,
   MenuItem,
   Select,
-  TextField } from '@mui/material';
+  TextField
+} from '@mui/material';
+import { useState } from 'react';
 
 export const Filter = () => {
+  const [isShowFilter, setIsShowFilter] = useState(false);
+
   return (
     <Box
       sx={{
@@ -22,6 +27,7 @@ export const Filter = () => {
       }}
     >
       <Button
+        onClick={() => setIsShowFilter(!isShowFilter)}
         sx={{
           color: 'inherit',
           bgcolor: '#F5F5F5',
@@ -33,30 +39,33 @@ export const Filter = () => {
           },
         }}
       >
-        Filter
+        {isShowFilter ? 'Remove filter' : 'Filter'}
       </Button>
 
-      <Select value='Select' sx={{ bgcolor: '#F5F5F5', zIndex: 1300 }}>
-        <MenuItem value='Select' sx={{ display: 'none' }}>
-          Select Item
-        </MenuItem>
+      {isShowFilter && (
+        <><Select value='Select' sx={{ bgcolor: '#F5F5F5', zIndex: 1300 }}>
+          <MenuItem value='Select' sx={{ display: 'none' }}>
+            Select Item
+          </MenuItem>
 
-        <FormGroup>
-          <FormControlLabel
-            control={<Checkbox />}
-            labelPlacement='start'
-            sx={{
-              display: 'flex',
-              pr: 2,
-              justifyContent: 'space-between',
-              textTransform: 'capitalize',
-            }} label={undefined} />
-        </FormGroup>
-      </Select>
-
-      <TextField id="outlined-basic" label="Add key words to find" variant="outlined" />
-
-      <Button
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox />}
+              labelPlacement='start'
+              sx={{
+                display: 'flex',
+                pr: 2,
+                justifyContent: 'space-between',
+                textTransform: 'capitalize',
+              }} label={undefined} />
+          </FormGroup>
+        </Select>
+          <TextField
+            id="outlined-basic"
+            label="Add key words to find"
+            variant="outlined"
+          />
+          <Button
             type='submit'
             sx={{
               color: 'inherit',
@@ -71,7 +80,9 @@ export const Filter = () => {
             }}
           >
             Find
-          </Button>
+          </Button></>
+      )
+      }
     </Box>
   );
 };
