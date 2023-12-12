@@ -36,7 +36,7 @@ export const Banner = () => {
         '@keyframes fadeIn': {
           from: {
             opacity: 0,
-            transform: 'translateY(-100px)',
+            transform: 'translateY(-100%)',
           },
           to: {
             opacity: 1,
